@@ -9,3 +9,5 @@ def scrape_dynamic_loading():
     options = Options()
     options.binary_location = r"C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe"
     driver = webdriver.Chrome(options=options)
+
+    driver.get("https://the-internet.herokuapp.com/dynamic_loading/2")
