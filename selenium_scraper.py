@@ -4,12 +4,27 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.chrome.options import Options
+
+def get_brave_driver():
+    # 1. Define options for Chrome (which Brave uses)
+    options = Options()
+    
+    # 2. Point to your Brave executable (Update this path if you installed it elsewhere)
+    # Common path for Windows:
+    options.binary_location = r"C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe"
+    
+    # 3. Initialize the driver using Chrome
+    # Selenium Manager (in newer versions) will automatically download the matching ChromeDriver
+    driver = webdriver.Chrome(options=options)
+    
+    return driver
 
 def scrape_quotes_selenium():
 
     data = []
-    driver = webdriver.Edge()
+    driver = get_brave_driver()
     driver.get("https://quotes.toscrape.com/js/")
 
     wait = WebDriverWait(driver, 10)
