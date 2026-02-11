@@ -48,10 +48,10 @@ def scrape_quotes_selenium():
 
     driver.quit()
     print(f"Total quotes found and saved: {len(data)}")
-    
+
     # --Gemmer til fil-- 
     os.makedirs("outputs", exist_ok=True)
-    with open("outputs/quotes_selenium.json", "w", encoding="utf-8") as f:
+    with open("outputs/quotes_selenium_1.json", "w", encoding="utf-8") as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
 
 if __name__ == "__main__":
