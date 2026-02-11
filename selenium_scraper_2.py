@@ -11,3 +11,16 @@ def scrape_dynamic_loading():
     driver = webdriver.Chrome(options=options)
 
     driver.get("https://the-internet.herokuapp.com/dynamic_loading/2")
+
+    driver.find_element(By.TAG_NAME, "Button").click()
+
+    wait = WebDriverWait(driver, 10)
+    finish_element = wait.until(
+        EC.visibility_of_element_located((By.ID, "finish"))
+    )
+
+    print(finish_element.text)
+    driver.quit()
+
+if __name__ == "__main__":
+    scrape_dynamic_loading()
