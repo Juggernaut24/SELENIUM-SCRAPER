@@ -18,7 +18,7 @@ def scrape_async_hackernews():
     )
 
     first_original_article = wait.until(
-        EC.presence_of_element_located((By.CSS_SELECTOR, ".story"))
+        EC.presence_of_element_located((By.CSS_SELECTOR, ".Story"))
     )
 
     search_input.send_keys("Selenium Python")
@@ -28,13 +28,13 @@ def scrape_async_hackernews():
     )
 
     new_articles = wait.until(
-        EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".story"))
+        EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".Story"))
     )
 
     print(f"Fandt {len(new_articles)} nye asynkrone resultater. her er de første 5")
     for article in new_articles[:5]:
 
-        title = article.find_element(By.CSS_SELECTOR, ".story_title").text
+        title = article.find_element(By.CSS_SELECTOR, ".Story_title").text
         print(f"- {title}")
 
     driver.quit()
